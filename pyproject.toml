@@ -1,0 +1,45 @@
+[project]
+name = "edge-nn-offloading-mqtt"
+dynamic = ["version"]  # This relies on git tags for versioning
+authors = [
+    { name = "Fabio Bove", email = "fabio.bove.dr@gmail.com" }
+]
+description = "MQTT Neural Network Offloading Service"
+readme = "README.md"
+license = { file = "LICENSE" }
+keywords = ["flask-app", "esp32", "split-computing"]
+
+# Specify the required dependencies with correct versions
+dependencies = [
+    "flask==3.0.3",
+    "flask-smorest==0.44.0",
+    "paho-mqtt==2.1.0",
+    "numpy>=1.0.0,<2.0.0",
+    "pandas~=2.2.2",
+    "tqdm~=4.66.4",
+    "scipy~=1.14.0",
+    "tensorflow",
+    "h5py==3.11.0",
+    "ntplib",
+]
+
+# Define optional dependencies like testing and CUDA support
+[project.optional-dependencies]
+test = [
+    "pytest==7.2.1",
+    "pytest-cov==5.0.0",
+    "pytest-mock==3.14.0",
+    "pytest-md==0.2.0"
+]
+
+[project.urls]
+Homepage = "https://github.com/fabiobove-dr/flask-mqq-esp32-nn-offloading"
+Issues = "https://github.com/fabiobove-dr/flask-mqq-esp32-nn-offloading/issues/"
+
+# Setuptools git versioning configuration
+[tool.setuptools-git-versioning]
+enabled = true
+
+[build-system]
+requires = ["setuptools>=61.0", "setuptools-git-versioning>=2.0,<3", "wheel"]
+build-backend = "setuptools.build_meta"

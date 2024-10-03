@@ -1,0 +1,21 @@
+version: '3.8'
+services:
+  mosquitto:
+    container_name: mosquitto_broker
+    build:
+      context: ./src/mosquitto_broker
+      dockerfile: ./dockerfiles/Dockerfile
+    hostname: mosquitto_broker
+    volumes:
+      - ./src/mosquitto_broker/conf:/mosquitto/config
+      - ./src/mosquitto_broker/log:/mosquitto/log
+      - ./src/mosquitto_broker/data:/mosquitto/data
+    restart: always
+    ports:
+      - "1883:1883"
+      - "5353:5353"
+    networks:
+      - mosquitto_broker
+networks:
+  mosquitto_broker:
+    name: mosquitto_broker

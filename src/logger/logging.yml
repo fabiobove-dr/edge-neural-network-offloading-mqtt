@@ -1,0 +1,38 @@
+logger_threshold:  365
+
+logger_path:
+  development: ""
+  production: ""
+  testing: ""
+
+logger_conf:
+  version: 1
+  disable_existing_loggers: False
+
+  formatters:
+    default:
+      format: "%(asctime)s %(levelname)s [%(module)s] (%(threadName)s) (%(funcName)s) %(message)s"
+      datefmt: '%Y-%m-%d %H:%M:%S'
+
+  handlers:
+    file:
+      class: 'logging.handlers.RotatingFileHandler'
+      level: 'INFO'
+      formatter: 'default'
+      filename: 'log'
+    console:
+      class: 'logging.StreamHandler'
+      level: 'DEBUG'
+      formatter: 'default'
+      stream: 'ext://sys.stdout'
+
+  loggers:
+    development:
+      level: 'DEBUG'
+      handlers: ['console']
+    testing:
+      level: 'ERROR'
+      handlers: ['console']
+    production:
+      level: 'WARNING'
+      handlers: ['console']
